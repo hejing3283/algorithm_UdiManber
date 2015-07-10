@@ -10,16 +10,16 @@ def Insert_Heap( A, n, x) :
       temp = A[parent - 1] 
       A[parent - 1 ] = A[child - 1]
       A[child - 1 ] = temp 
-
+      ## TODO to make it maitain the property in new leaf
       child = parent 
-      parent = child / 2 
+      parent = child / 2  
     else :
       break
 
   return A, n 
-A = [10, 7, 9, 3, 5, 6, 8 ] 
+A = [10, 9, 7, 3, 8, 6, 4 ] 
 n = 7 
-x = 4
+x = 5
 print A
 print Insert_Heap(A, n, x )
 A = [10, 7, 9, 3, 5, 1, 6 ] 
