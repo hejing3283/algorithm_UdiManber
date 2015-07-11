@@ -30,8 +30,8 @@ class Node:
   def delete(self, key) :
     ## delete a key
     node, parent = self.lookup(key)
-    if node == None:
-      print key, "not in the tree"
+    if node == None or parent == None:
+      print key, "not in the tree or root node"
       return self 
     if node.left is None and node.right is None:
       ## case 1 no child
