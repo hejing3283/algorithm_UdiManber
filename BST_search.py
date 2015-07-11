@@ -36,9 +36,10 @@ class Node:
     if node.left is None and node.right is None:
       ## case 1 no child
       if parent.left is node:
-	parent.left.key = None
+	parent.left = None
       else:
-	parent.right.key = None
+	parent.right = None
+      del node
     
     elif (node.left is None) + (node.right is None) == 1:
       ## case 2 one child
@@ -60,10 +61,17 @@ class Node:
 
     elif node.left and node.right:
       ## case 3 2 children
-
-
-
-
+      ## find a successor
+      parent = node
+      successor = parent.right
+      while successor.left:
+	parent = successor
+	sucessor = successor.left
+      node.key = successor.key
+      if parent.left is sucessor:
+	parent.left = successor.right
+      else:
+	parent.right = successor.right
 
   def print_tree(self):
     ### print the tree
@@ -95,11 +103,12 @@ root.insert(4)
 root.insert(11)
 root.insert(9)
 root.insert(7)
+x = 4
+x = 7
+x = 8
+root.lookup(x)[0].print_tree()
+print root.lookup(x)[0].left, "   ", root.lookup(x)[0].right  
 print "-----------"
+root.delete(x)
 root.print_tree()
-print "-----------"
-root.lookup(11)[0].print_tree()
-print "-----------"
-print "  ", root.lookup(10)[0].key
-print root.lookup(10)[0].left.key, "   ", root.lookup(10)[0].right.key  
 
