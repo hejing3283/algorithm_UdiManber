@@ -7,20 +7,13 @@ def straight_radix( X, n, k):
   GQ = X[:]
   Q =  [ [] for _  in range(dnum + 1) ]
   for ik in range(k-1,-1, -1):
-    # print "---", ik 
-    # print Q
     while len(GQ) :
       x = GQ.pop()
       d = int(str(x)[ik])
       Q[d].insert(0,x)
-    # print Q
-    # print "---"
-    # print GQ
     for t in range(dnum + 1) :
       GQ.extend( Q[t] ) 
-    # print GQ
     Q =  [ [] for _  in range(dnum + 1) ]
-
   return GQ
 
 X = [410,153,792,400,123,503]
