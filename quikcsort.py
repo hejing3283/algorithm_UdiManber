@@ -5,6 +5,7 @@ def quicksort( A ):
   thought: why? another stratgy when compare to mergesort, which spends 
   lots effort on merging, quicksort spend many effort on dividing. 
   both used divided and conquer strategy. 
+  TODO: consider improvement for base cases
   """
   def partition( A, left, right):
     '''
