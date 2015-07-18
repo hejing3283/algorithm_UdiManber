@@ -25,5 +25,6 @@ print A
 # print binary_search(A, n, 8)
 print binary_search(A, n, 10)
 print binary_search(A, n, 9)
+print binary_search(A, n, 2)
 print binary_search(A, n, 1)
 print binary_search(A, n, 14)
