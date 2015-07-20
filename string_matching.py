@@ -8,18 +8,21 @@ def string_match(A, n, B, m):
 
 A = "xyxxyxyxyyxyxyxyyxyxyxx"
 B = "xyxyyxyxyxx"
+# nextB = [-1,0,0,1,2,0,1,2,3,4,3] 
+
 def compute_nextB(B, m):
   '''
   preprocess the talbe for next 
   brutal-force way
   '''
-  nextB = [-1,0]
-  iB = 0
-  for im in range(1,m+1):
-    while im > 0 :
-      if im  
-    
-    
-  
-  return nextB
-nextB = 
+  nextB = [ -1 for _ in B]
+  nextB[:2] = [-2,-1]
+  for ile in range(2,m):
+    irt = nextB[ ile - 1 ] + 1
+    while B[ile -1] != B[irt] and irt > -1 :
+      irt = nextB[irt] + 1 
+    nextB[ ile ] = irt
+  return map(lambda x:x+1,nextB )
+# print nextB  
+print B
+print compute_nextB(B, 10)
