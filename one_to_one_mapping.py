@@ -21,7 +21,6 @@ def mapping( A, f, n ) :
   while len(queue) > 0 :
     i = queue.pop(0)
     print i, S
-    # S.pop(i) ### index retains the mapping information
     S.remove(i) ### index retains the mapping information
     temp = f[i]
     counter[ temp ] = counter[ temp ] - 1
