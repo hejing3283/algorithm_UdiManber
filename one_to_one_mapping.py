@@ -1,6 +1,6 @@
-def mapping( A , f ) :
+def mapping( A, f, n ) :
   '''
-  given a set of integers A, and a function f 
+  given a set of integers f , which is a mapping from 1 to n 
   identify a subset of S in which all the elements in S, 
   are mapping to all the elements in S
   input: a set of integers f, maximum integer n  
@@ -10,33 +10,29 @@ def mapping( A , f ) :
   -- implementation in non-recursive
   -- implementation in recursive
   '''
-  n = len(A)
-  fA = map(f, A)
-  fA = [i for i in fA if i in A]
-
+  A = map(lambda x:x-1,A)
+  f = map(lambda f:f-1,f)
   S = A[:]
-  counter = [0 for _ in range(n) ] 
-  for i in range(len(fA)) : 
-    counter[ fA[i] ] +=  1 
-  queue = [ j for j in range(n) if counter[j] == 0 ] 
-  print counter
+  counter = [0 for _ in range(n ) ] 
+  for i in range(n) : 
+    counter[ f[i] ] +=  1 
+  queue = [ j for j in range(n ) if counter[j] == 0 ] 
+
   while len(queue) > 0 :
-    print queue, 
     i = queue.pop(0)
-    print i,
-    S.pop(i)
-    counter[ fA[i] ] = counter[ fA[i] ] - 1
-    print counter
-    if counter[ fA[i] ] == 0:
-      queue.extend( [fA[i]] ) 
+    print i, S
+    # S.pop(i) ### index retains the mapping information
+    S.remove(i) ### index retains the mapping information
+    temp = f[i]
+    counter[ temp ] = counter[ temp ] - 1
+    if counter[temp] == 0 :
+      queue.extend( [f[i] ] ) 
+  return map(lambda x:x+1,S )
 
-  return S
-
-A = [1,5,2,3,7,8,10]
-
-def mapf_1(x):
-  return 2 * x -1
-
-fun = mapf_1
-print mapping(A, fun) ### do not pass the name of the function, pass the function 
+A = [1,2,3,4,5,6,7]
+f = [3,1,1,5,5,4,6]
+print mapping(A, f, 7) ### do not pass the name of the function, pass the function 
+A = [1,2,3,4,5,6,7,8,9,10,11]
+f = [9,5,6,3,3,3,1,4,1,7,8]
+print mapping(A, f, 11)
 
