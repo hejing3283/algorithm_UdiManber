@@ -13,16 +13,19 @@ B = "xyxyyxyxyxx"
 def compute_nextB(B, m):
   '''
   preprocess the talbe for next 
-  brutal-force way
+  induction proof
+  input: B, m as the lenght of B
+  output: nextB as the index for sequence B 
   '''
   nextB = [ -1 for _ in B]
   nextB[:2] = [-2,-1]
-  for ile in range(2,m):
+  for ile in range(2,m+1):
     irt = nextB[ ile - 1 ] + 1
     while B[ile -1] != B[irt] and irt > -1 :
       irt = nextB[irt] + 1 
     nextB[ ile ] = irt
-  return map(lambda x:x+1,nextB )
-# print nextB  
-print B
-print compute_nextB(B, 10)
+  return B, nextB
+# map(lambda x:x+1,nextB )
+
+B, nextB =  compute_nextB(B, 10)
+print B, nextB
