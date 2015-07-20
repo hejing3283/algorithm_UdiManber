@@ -7,6 +7,8 @@ def mapping( A , f ) :
   output: new set S
   thougth:
   elimination of elements that not belongs to S
+  -- implementation in non-recursive
+  -- implementation in recursive
   '''
   n = len(A)
   fA = map(f, A)
