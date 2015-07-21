@@ -38,11 +38,10 @@ def compute_nextB(B, m):
   return B, nextB
 
 A = "xyxxyxyxyyxyxyxyyxyxyxx"
-n = len(A)
 B = "xyxyyxyxyxx"
+n = len(A)
 m = len(B)
 print "golden starndar",[-1,0,0,1,2,0,1,2,3,4,3] 
-B, nextB =  compute_nextB(B, m-1)
 startA =  string_match(A, n-1, B, m-1)
 print A[startA:]
 print B
