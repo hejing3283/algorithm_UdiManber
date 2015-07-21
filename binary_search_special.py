@@ -1,35 +1,33 @@
-def special_binary_search(A, n):
+def special_binary_search(A, left, right, n):
   '''
   input: X, a sorted array, length n  
   output: position of which ai = i
   desp.: recursion
   '''
-  def _bsearch( A, left, right):
+  ### boundary handling 
+  if right - left <= 1 and (right == n-1 or left == 0):
+    if A[right ] == n-1  :
+      return n-1 
+    elif A[left ] == 0 :
+      return 0
+  else:
     mid  = (right + left) / 2
-    if mid == A[mid]:
-      return mid
-    elif A[mid] > mid and mid > 0:
-      _bsearch(A, left, mid) 
-    elif A[mid] < mid  and mid < n-1:
-      _bsearch(A, med, right) 
+    if A[mid] > mid :
+      return special_binary_search(A, left, mid, n) 
+    elif A[mid] < mid :
+      return special_binary_search(A, mid, right, n) 
     else:
-      if A[right ] == n-1 :
-	return n-1 
-      elif A[left ] == 0:
-	return 0
-      else:
-	return None
-  return _bsearch(A, 0, n-1)
+      return mid
 
 if __name__ == "__main__":
  
-  A = range(-5,16,2)
-  n = 11
-  print A, special_binary_search(A,n)
-
+  A = range(-5,16,2); n =len(A) 
+  print A,n, special_binary_search(A,0, n-1, n)
   A = range(0,16,2)
   n = len(A) 
-  print A, special_binary_search(A,n)
+  print A, n, special_binary_search(A,0, n-1, n)
   A = range(0,7,2)
   n = len(A) 
-  print A, special_binary_search(A,n)
+  print A,n, special_binary_search(A,0,n-1,n)
+  A = range(-3,15,2); n = len(A) 
+  print A,n, special_binary_search(A,0, n-1, n)
