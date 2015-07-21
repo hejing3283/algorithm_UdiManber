@@ -3,19 +3,27 @@ Algorithm Introduction: an creative approach
 > git log --name-status --pretty=oneline |grep A init
 
 TO FINISHE:
-- binary_search_special.py
+* binary_search_special.py
 - binary_search_cyclic.py
+- coloring_problem.py
+- find_two_largest_element.py
 - heapsort.py
 - huffman_encoding.py
+- majority.py
 - maximal_subgraph.py
-* one-to-one mapping 
-- string_matching.py
+- minimum_edit_distance.py
+- mode_of_multiset.py
 - sequence_comparison.py
 - selection_kth.py
 - stuttering_subsequence.py
+- longest_increasing_subsequence.py
 
+FINISHED but TO REVIEW or Improve:
+- one-to-one mapping 
+- celebrity
+- skyline
+- binary_search.py
 
-TO REVIEW:
-celebrity
-skyline
-binary_search.py
+FINISHED:
+ 
+- string_matching.py
