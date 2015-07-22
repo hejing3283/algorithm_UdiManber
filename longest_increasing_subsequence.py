@@ -3,8 +3,62 @@ def longest_increasing_subsequencing( A , m ) :
   input: a sequence of integers
   output : the longest increasing subsequence 
   '''
+  BIS = [] 
+  LIS = None
+  def bsearch_last(BISlast, left, right, k, a ):
+    '''
+    given a set of BIS, the length of it, and an element, return the indices k1, k2 
+    for which BIS[k1][-1] < a < BIS[k2][-1]
+    or [-1,0] if it's minimum
+    or k, k+1 if it's maximum
+    use binary search
+    '''
+    med = (left + right) / 2
+    if right - left == 1:
+      return left, right
+    else:
+      if BISlast[ left ] > a :
+        return -1, 0 
+      else:
+        if BISlast[med] > a:
+          return bsearch_last(BISlast, left, med , k, a)
+        elif BISlast[ med ] < a :
+          if BISlast[right] > a :
+            return bsearch_last(BISlast, med, right, k, a )
+          else:
+            return k-1, k  
+        else: 
+          return med, med 
+  for ia in range(1,m) :
+    kBIS = len(BIS)
+    BISlast = map(lambda x:x[-1], BIS)
+    ik1, ik2 = bsearch_last(BISlast, 0, kBIS-1, kBIS, A[ia])
+    if ik1 < 0 :
+      ## start a new sequence
+      BIS.insert(0,[A[ia]])
+    elif A[ia] < BIS[ik2][-1] and A[ia] > BIS[ik1][-1]:
+      ## update ik1
+      BIS[ik1].append(A[ia])
+    elif A[ia] > BIS[ik2][-1]:
+      BIS[ik2].append(A[ia])
+    else:
+      pass
+  lenBIS = 0
+  LIS = []
+  for iBis in BIS:
+    n  = len(iBis)
+    if n > lenBIS:
+      lenBIS = n
+      LIS = iBis 
+    elif n == lenBIS:
+      LIS.append(iBis)
+    else:
+      continue
   return LIS 
 
-if _name_ = "__main__" :
-
+if __name__ == "__main__" :
+  A = [1,5,-1,9,2,7,3,4,10,6,7]
+  m = len(A)
+  print A 
   print longest_increasing_subsequencing(A, m)
+
