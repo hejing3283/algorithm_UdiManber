@@ -15,7 +15,12 @@ def longest_increasing_subsequencing( A , m ) :
     '''
     med = (left + right) / 2
     if right - left == 1:
-      return left, right
+      if BISlast[ left ] > a :
+        return -1, 0 
+      elif BISlast[right] < a :
+	return k-1, k
+      else:
+	return left, right
     else:
       if BISlast[ left ] > a :
         return -1, 0 
@@ -29,20 +34,26 @@ def longest_increasing_subsequencing( A , m ) :
             return k-1, k  
         else: 
           return med, med 
+  BIS = []
+  BIS.append([A[0]])
+
   for ia in range(1,m) :
     kBIS = len(BIS)
-    BISlast = map(lambda x:x[-1], BIS)
-    ik1, ik2 = bsearch_last(BISlast, 0, kBIS-1, kBIS, A[ia])
-    if ik1 < 0 :
-      ## start a new sequence
-      BIS.insert(0,[A[ia]])
-    elif A[ia] < BIS[ik2][-1] and A[ia] > BIS[ik1][-1]:
-      ## update ik1
-      BIS[ik1].append(A[ia])
-    elif A[ia] > BIS[ik2][-1]:
-      BIS[ik2].append(A[ia])
-    else:
-      pass
+    if kBIS == 1:
+      if A[ia] > BIS[0][-1]:
+	BIS[0].append(A[ia])
+      else:
+	BIS.insert(0,[A[ia]])
+    else: 
+      BISlast = map(lambda x:x[-1], BIS)
+      ik1, ik2 = bsearch_last(BISlast, 0, kBIS-1, kBIS, A[ia])
+      if ik1 < 0 or ik1 == ik2:
+        ## start a new sequence
+        BIS.insert(0,[A[ia]])
+      elif ik1 == kBIS - 1:
+	BIS[ik1].append( A[ia] )
+      else:
+        BIS[ik1].append( A[ia] )
   lenBIS = 0
   LIS = []
   for iBis in BIS:
