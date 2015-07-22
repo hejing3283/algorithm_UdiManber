@@ -49,6 +49,7 @@ def longest_increasing_subsequencing( A , m ) :
       ik1, ik2 = bsearch_last(BISlast, 0, kBIS-1, kBIS, A[ia])
       if ik1 < 0 or ik1 == ik2:
         ## start a new sequence
+	### need to think about updating the BIS instead of getting new ones
         BIS.insert(0,[A[ia]])
       elif ik1 == kBIS - 1:
 	BIS[ik1].append( A[ia] )
@@ -69,6 +70,7 @@ def longest_increasing_subsequencing( A , m ) :
 
 if __name__ == "__main__" :
   A = [1,5,-1,9,2,7,3,4,10,6,7]
+  ## optimal -1, 2, 3, 4, 6, 7
   m = len(A)
   print A 
   print longest_increasing_subsequencing(A, m)
