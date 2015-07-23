@@ -3,8 +3,6 @@ def longest_increasing_subsequencing( A , m ) :
   input: a sequence of integers
   output : the longest increasing subsequence 
   '''
-  BIS = [] 
-  LIS = None
   def bsearch_last(BISlast, left, right, k, a ):
     '''
     given a set of BIS, the length of it, and an element, return the indices k1, k2 
